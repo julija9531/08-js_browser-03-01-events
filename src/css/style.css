@@ -1,0 +1,29 @@
+body {
+    color: #999;
+}
+
+.table {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid;
+}
+
+.table__section {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid;
+    margin: 1em auto 1em;
+    /* background-image: url("../images/goblin.png");*/
+    background-size: cover; 
+    background-position: center;
+}
+
+.table__section__image {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid;
+    margin: 1em auto 1em;
+    background-image: url("../images/goblin.png");
+    background-size: cover; 
+    background-position: center;
+}
