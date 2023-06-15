@@ -33,7 +33,7 @@ jobs:
         run: yarn install
 
       - name: Run linters
-        run: npyarn run lint
+        run: yarn run lint
 
       - name: Run test
         run: yarn run coverage
