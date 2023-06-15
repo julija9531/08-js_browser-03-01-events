@@ -3,9 +3,9 @@ stack: node 18.16.0 # окружение
 branches: 
     only: 
         - master # ветка git 
-cache: .yarn/cache # кеширование 
+cache: node_modules # кеширование 
 install: 
-    - yarn install # команда установки зависимостей 
+    - npm install # команда установки зависимостей 
 build: off
 test_script: 
-    - yarn run lint && yarn test # скрипт сборки
+    - npm run lint && npm test # скрипт сборки
