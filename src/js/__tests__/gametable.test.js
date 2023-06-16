@@ -1,6 +1,8 @@
-import GameTable from "../app.js";
+import GameTable from "../gametable.js";
+import Player from "../player.js";
 
-// 01. class GameTable/constructor: Ввод некорректных данных(не целых чисел)
+// 01.1. class GameTable/constructor: Ввод некорректных данных(не целых чисел)
+let playerTest = new Player();
 test.each([
   [1.5, 2, Error, "Введенные данные не являются целыми числами, больше 0!"],
   ["5", "3", Error, "Введенные данные не являются целыми числами, больше 0!"],
@@ -13,11 +15,11 @@ test.each([
   [0, 5, Error, "Введенные данные не являются целыми числами, больше 0!"],
   [-2, 5, Error, "Введенные данные не являются целыми числами, больше 0!"],
 ])(
-  "01. class GameTable/constructor: Ввод некорректных данных(не целых чисел)",
+  "01.1. class GameTable/constructor: Ввод некорректных данных(не целых чисел)",
   (rows, columns, errorType, errorText) => {
     function result() {
       /* eslint-disable no-new */
-      new GameTable(rows, columns);
+      new GameTable(playerTest, rows, columns);
     }
 
     expect(result).toThrow(errorType); // Проверка типа ошибки
@@ -25,8 +27,8 @@ test.each([
   }
 );
 
-// 02. class GameTable/constructor: Ввод некорректных данных(без данных)
-test("02. class GameTable/constructor: Ввод некорректных данных(без данных)", () => {
+// 01.2. class GameTable/constructor: Ввод некорректных данных(без данных)
+test("01.2. class GameTable/constructor: Ввод некорректных данных(без данных)", () => {
   function result() {
     /* eslint-disable no-new */
     new GameTable();
@@ -38,9 +40,9 @@ test("02. class GameTable/constructor: Ввод некорректных дан�
   ); // Проверка текста ошибки
 });
 
-// 03. class GameTable/constructor, createGameTable: Проверка свойств класса:
-test("03. class GameTable/constructor, createGameTable: Проверка свойств класса:", () => {
-  const result = new GameTable(3, 5, false);
+// 02. class GameTable/constructor, createGameTable: Проверка свойств класса:
+test("02. class GameTable/constructor, createGameTable: Проверка свойств класса:", () => {
+  const result = new GameTable(playerTest, 3, 5, false);
 
   expect(result.rows).toBe(3);
   expect(result.columns).toBe(5);
@@ -61,14 +63,18 @@ test("03. class GameTable/constructor, createGameTable: Проверка сво�
   for (let i = 0; i < 15; i += 1) {
     elems[i] = elem.cloneNode(true);
     table.appendChild(elems[i]);
+    elems[i].onclick = function () {
+      playerTest.hitTest(result, i);
+    };
   }
+
   expect(result.table).toEqual(table);
   expect(result.elems).toEqual(elems);
 });
 
 // 04. class GameTable/mooveImage: Проверка свойств класса:
 test("04. class GameTable/mooveImage: Проверка свойств класса:", () => {
-  const result = new GameTable(2, 3, true);
+  const result = new GameTable(playerTest, 2, 3, true);
   result.mooveImage();
 
   let imagNum = 0;

@@ -13,7 +13,6 @@ body {
     flex-wrap: wrap;
     border: 1px solid;
     margin: 1em auto 1em;
-    /* background-image: url("../images/goblin.png");*/
     background-size: cover; 
     background-position: center;
 }
@@ -26,4 +25,28 @@ body {
     background-image: url("../images/goblin.png");
     background-size: cover; 
     background-position: center;
+}
+
+.cursor {
+    height: 10%;
+    width: 10%;
+    background-image: url("../images/hammer.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box;
+    position: absolute;
+    pointer-events: none;
+}
+
+.cursor__press {
+    height: 10%;
+    width: 10%;
+    background-image: url("../images/hammer__press.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box;
+    position: absolute;
+    pointer-events: none;
 }
