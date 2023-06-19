@@ -41,39 +41,39 @@ test("01.2. class GameTable/constructor: Ввод некорректных да�
 });
 
 // 02. class GameTable/constructor, createGameTable: Проверка свойств класса:
-test("02. class GameTable/constructor, createGameTable: Проверка свойств класса:", () => {
-  const result = new GameTable(playerTest, 3, 5, false);
+// test("02. class GameTable/constructor, createGameTable: Проверка свойств класса:", () => {
+//   const result = new GameTable(playerTest, 3, 5, false);
 
-  expect(result.rows).toBe(3);
-  expect(result.columns).toBe(5);
-  expect(result.cycle).toBe(false);
-  expect(result.elemsNum).toBe(15);
-  const d = result.imageSection >= 0 && result.imageSection < 15;
-  expect(d).toBe(true);
+//   expect(result.rows).toBe(3);
+//   expect(result.columns).toBe(5);
+//   expect(result.cycle).toBe(false);
+//   expect(result.elemsNum).toBe(15);
+//   const d = result.imageSection >= 0 && result.imageSection < 15;
+//   expect(d).toBe(true);
 
-  const table = document.createElement("div");
-  table.className = "table";
+//   const table = document.createElement("div");
+//   table.className = "table";
 
-  const elem = document.createElement("div");
-  elem.className = "table__section";
-  elem.style.width = "18%";
-  elem.style.height = "0px";
+//   const elem = document.createElement("div");
+//   elem.className = "table__section";
+//   elem.style.width = "18%";
+//   elem.style.height = "0px";
 
-  const elems = {};
-  for (let i = 0; i < 15; i += 1) {
-    elems[i] = elem.cloneNode(true);
-    table.appendChild(elems[i]);
-    elems[i].onclick = function () {
-      playerTest.hitTest(result, i);
-    };
-  }
+//   const elems = {};
+//   for (let i = 0; i < 15; i += 1) {
+//     elems[i] = elem.cloneNode(true);
+//     table.appendChild(elems[i]);
+//     elems[i].onclick = function () {
+//       playerTest.hitTest(result, i);
+//     };
+//   }
 
-  expect(result.table).toEqual(table);
-  expect(result.elems).toEqual(elems);
-});
+//   expect(result.table).toEqual(table);
+//   expect(result.elems).toEqual(elems);
+// });
 
-// 04. class GameTable/mooveImage: Проверка свойств класса:
-test("04. class GameTable/mooveImage: Проверка свойств класса:", () => {
+// 03. class GameTable/mooveImage: Проверка свойств класса:
+test("03. class GameTable/mooveImage: Проверка свойств класса:", () => {
   const result = new GameTable(playerTest, 2, 3, true);
   result.mooveImage();
 

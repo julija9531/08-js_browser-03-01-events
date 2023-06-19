@@ -6,13 +6,14 @@ body {
     display: flex;
     flex-wrap: wrap;
     border: 1px solid;
+    margin: auto;
 }
 
 .table__section {
     display: flex;
     flex-wrap: wrap;
     border: 1px solid;
-    margin: 1em auto 1em;
+    margin: auto;
     background-size: cover; 
     background-position: center;
 }
@@ -21,7 +22,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     border: 1px solid;
-    margin: 1em auto 1em;
+    margin: auto;
     background-image: url("../images/goblin.png");
     background-size: cover; 
     background-position: center;

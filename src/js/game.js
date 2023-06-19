@@ -6,7 +6,7 @@ export default class Game {
   constructor() {
     this.startGame = confirm("Запуск игры!");
     if (this.startGame) {
-      this.start(3, 5);
+      this.start(4, 4);
     }
   }
 

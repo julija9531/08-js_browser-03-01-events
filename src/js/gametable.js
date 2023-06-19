@@ -35,13 +35,32 @@ export default class GameTable {
 
     const elem = document.createElement("div");
     elem.className = "table__section";
-    elem.style.width = `${Math.round(90 / this.columns)}%`;
+
+    // задаем размеры стола:
+    const scrWidth = window.screen.width;
+    const scrHeight = window.screen.height;
+    // если ограничены высотой окна
+    if (scrWidth / scrHeight > this.columns / this.rows) {
+      this.table.style.width = `${Math.round(
+        (100 * this.columns) / this.rows
+      )}vh`;
+      this.table.style.height = "95vh";
+      elem.style.width = `${Math.round(85 / this.rows)}vh`;
+      elem.style.height = `${Math.round(85 / this.rows)}vh`;
+    } else {
+      // если ограничены шириной окна
+      this.table.style.width = "95vw";
+      this.table.style.height = `${Math.round(
+        (scrWidth / this.columns) * this.rows
+      )}px`;
+      elem.style.width = `${Math.round(85 / this.columns)}vw`;
+      elem.style.height = `${Math.round(85 / this.columns)}vw`;
+    }
 
     for (let i = 0; i < this.elemsNum; i += 1) {
       this.elems[i] = elem.cloneNode(true);
       // this.elems[i].textContent = i;
       this.table.appendChild(this.elems[i]);
-      this.elems[i].style.height = `${this.elems[i].offsetWidth}px`;
 
       // Нажатие на элемент:
       this.elems[i].onclick = function () {
