@@ -12,9 +12,11 @@ export default class Player {
     if (gT.imageSection === i) {
       console.log("Попал!");
       this.score = this.score + 1;
+      gT.scoreboard__score.textContent = `Попадания: ${this.score}/${gT.vin};`;
     } else {
       console.log("Мимо!");
       this.fail = this.fail + 1;
+      gT.scoreboard__fail.textContent = `Промахи: ${this.fail}/${gT.fail}`;
     }
     this.lastClick = i;
     clearInterval(gT.timerId);

@@ -2,6 +2,13 @@ body {
     color: #999;
 }
 
+.game {
+    display: flex;
+    /*flex-wrap: wrap;*/
+    flex-direction: column;
+    margin: auto;
+}
+
 .table {
     display: flex;
     flex-wrap: wrap;
@@ -50,4 +57,10 @@ body {
     box-sizing: border-box;
     position: absolute;
     pointer-events: none;
+}
+
+.scoreboard {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
 }

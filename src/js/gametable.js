@@ -21,6 +21,9 @@ export default class GameTable {
       // Создаем поле с заданным количеством секций
       this.createGameTable(this, player1);
 
+      // Создаем поле со счётом
+      this.createScoreboard(this, player1);
+
       // Запускаем цикл смены картинкой секции
       this.mooveImageCycle(cycle);
     } else {
@@ -29,9 +32,13 @@ export default class GameTable {
   }
 
   createGameTable(_this, player1) {
+    this.game = document.createElement("div");
+    this.game.className = "game";
+    document.body.append(this.game);
+
     this.table = document.createElement("div");
     this.table.className = "table";
-    document.body.append(this.table);
+    this.game.appendChild(this.table);
 
     const elem = document.createElement("div");
     elem.className = "table__section";
@@ -44,17 +51,17 @@ export default class GameTable {
       this.table.style.width = `${Math.round(
         (100 * this.columns) / this.rows
       )}vh`;
-      this.table.style.height = "95vh";
-      elem.style.width = `${Math.round(85 / this.rows)}vh`;
-      elem.style.height = `${Math.round(85 / this.rows)}vh`;
+      this.table.style.height = "90vh";
+      elem.style.width = `${Math.round(80 / this.rows)}vh`;
+      elem.style.height = `${Math.round(80 / this.rows)}vh`;
     } else {
       // если ограничены шириной окна
-      this.table.style.width = "95vw";
+      this.table.style.width = "90vw";
       this.table.style.height = `${Math.round(
         (scrWidth / this.columns) * this.rows
       )}px`;
-      elem.style.width = `${Math.round(85 / this.columns)}vw`;
-      elem.style.height = `${Math.round(85 / this.columns)}vw`;
+      elem.style.width = `${Math.round(80 / this.columns)}vw`;
+      elem.style.height = `${Math.round(80 / this.columns)}vw`;
     }
 
     for (let i = 0; i < this.elemsNum; i += 1) {
@@ -67,6 +74,23 @@ export default class GameTable {
         player1.hitTest(_this, i);
       };
     }
+  }
+
+  createScoreboard(_this, player1) {
+    _this.scoreboard = document.createElement("div");
+    _this.scoreboard.className = "scoreboard";
+    _this.game.appendChild(_this.scoreboard);
+
+    _this.scoreboard__score = document.createElement("div");
+    _this.scoreboard__score.className = "scoreboard__score";
+    _this.scoreboard.appendChild(_this.scoreboard__score);
+    _this.scoreboard__score.textContent = `Попадания: ${player1.score}/${_this.vin};`;
+
+    _this.scoreboard__fail = document.createElement("div");
+    _this.scoreboard__fail.className = "scoreboard__fail";
+    _this.scoreboard.appendChild(_this.scoreboard__fail);
+    _this.scoreboard__fail.textContent = `Промахи: ${player1.fail}/${_this.fail}`;
+    _this.scoreboard__fail.style.paddingLeft = "5px";
   }
 
   mooveImageCycle(cycle) {
